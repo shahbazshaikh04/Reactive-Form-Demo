@@ -1,0 +1,41 @@
+<div>
+    <form [formGroup]="formGroup">
+        <div class="form-row">
+            <div class="col-md-5 mb-3">
+                <label for="oldPassword">Old Password</label>
+                <input type="text" class="form-control" formControlName="oldPassword" id="oldPassword"
+                    placeholder="Old Password">
+                <div class="text-success"
+                    *ngIf="formGroup.controls.oldPassword.invalid && (isSubmitted || formGroup.controls.oldPassword.touched || formGroup.controls.oldPassword.dirty)">
+                    Old Passsword is macth.
+                </div>
+            </div>
+            <div class="col-md-5 mb-3">
+                <label for="newPassword">New Password</label>
+                <input type="text" class="form-control" id="newPassword" formControlName="newPassword"
+                    placeholder="New Password">
+                <div class="text-danger"
+                    *ngIf="formGroup.controls.newPassword.invalid && (isSubmitted || formGroup.controls.newPassword.touched || formGroup.controls.newPassword.dirty)">
+                    <p *ngIf="formGroup.controls.newPassword.errors?.required">
+                        New Password is required.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5 mb-3">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="text" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+                    placeholder="Confirm Password">
+                <div class="text-danger"
+                    *ngIf="formGroup.controls.confirmPassword.invalid && (isSubmitted || formGroup.controls.confirmPassword.touched || formGroup.controls.confirmPassword.dirty)">
+                    <p *ngIf="formGroup.controls.confirmPassword.errors?.required">
+                        Confirm Password is required.
+                    </p>
+                    <div *ngIf="formGroup.get('confirmPassword').errors.confirmPasswordValidator">
+                        Passsword and Confirm Password didn't match.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" (click)="saveForm()">Submit form</button>
+    </form>
+</div>

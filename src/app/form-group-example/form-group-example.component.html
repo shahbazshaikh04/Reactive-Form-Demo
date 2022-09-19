@@ -1,0 +1,130 @@
+<div>
+    <form [formGroup]="profileForm">
+        <div class="form-row">
+            <div class="col-md-3 mb-3 formControl">
+                <label for="validationServer01">First name</label>
+                <input type="text" class="form-control" formControlName="firstName" id="validationServer01"
+                    placeholder="First name"
+                    [ngClass]="{'is-invalid' : profileForm.controls.firstName.invalid && (isSubmitted || profileForm.controls.firstName.touched || profileForm.controls.firstName.dirty),
+                    'is-valid' : profileForm.controls.firstName.valid && (isSubmitted || profileForm.controls.firstName.touched || profileForm.controls.firstName.dirty)}">
+                <div class="invalid-feedback"
+                    *ngIf="profileForm.controls.firstName.invalid && (isSubmitted || profileForm.controls.firstName.touched || profileForm.controls.firstName.dirty)">
+                    <div *ngIf="profileForm.controls.firstName.errors?.required">
+                        First Name is required.
+                    </div>
+                    <div *ngIf="profileForm.controls.firstName.errors?.minlength">
+                        First Name have minimum length of 5 charecter.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3 formControl">
+                <label for="validationServer02">Last name</label>
+                <input type="text" class="form-control" id="validationServer02" formControlName="lastName"
+                    placeholder="Last name"
+                    [ngClass]="{'is-invalid' : profileForm.controls.lastName.invalid && (isSubmitted || profileForm.controls.lastName.touched || profileForm.controls.lastName.dirty),
+                    'is-valid' : profileForm.controls.lastName.valid && (isSubmitted || profileForm.controls.lastName.touched || profileForm.controls.lastName.dirty)}">
+                <div class="invalid-feedback"
+                    *ngIf="profileForm.controls.lastName.invalid && (isSubmitted || profileForm.controls.lastName.touched || profileForm.controls.lastName.dirty)">
+                    <div *ngIf="profileForm.controls.lastName.errors?.required">
+                        Last Name is required.
+                    </div>
+                    <div *ngIf="profileForm.controls.lastName.errors?.maxlength">
+                        Last Name have maximum length of 5 charecter.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3 formControl">
+                <label for="validationServerUsername">Username</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="validationServerUsername" formControlName="userName"
+                        placeholder="Username"
+                        [ngClass]="{'is-invalid' : profileForm.controls.userName.invalid && (isSubmitted || profileForm.controls.userName.touched || profileForm.controls.userName.dirty),
+                    'is-valid' : profileForm.controls.userName.valid && (isSubmitted || profileForm.controls.userName.touched || profileForm.controls.userName.dirty)}">
+                    <div class="invalid-feedback"
+                        *ngIf="profileForm.controls.userName.invalid && (isSubmitted || profileForm.controls.userName.touched || profileForm.controls.userName.dirty)">
+                        <div *ngIf="profileForm.controls.userName.errors?.required">
+                            User Name is required.
+                        </div>
+                        <div *ngIf="profileForm.controls.userName.errors?.pattern">
+                            User Name only accept only small latter and number.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-5 mb-3 formControl">
+                <label for="validationServer03">Phone Number</label>
+                <input type="text" class="form-control" id="validationServer03" formControlName="phone"
+                    placeholder="Phone Number"
+                    [ngClass]="{'is-invalid' : profileForm.controls.phone.invalid && (isSubmitted || profileForm.controls.phone.touched || profileForm.controls.phone.dirty),
+                'is-valid' : profileForm.controls.phone.valid && (isSubmitted || profileForm.controls.phone.touched || profileForm.controls.phone.dirty)}">
+                <div class="invalid-feedback"
+                    *ngIf="profileForm.controls.phone.invalid && (isSubmitted || profileForm.controls.phone.touched || profileForm.controls.phone.dirty)">
+                    <div *ngIf="profileForm.controls.phone.errors?.pattern">
+                        Phone Number accept only digit.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3 formControl">
+                <label for="validationServer04">Age</label>
+                <input type="number" class="form-control" formControlName="age" id="validationServer04"
+                    placeholder="Age"
+                    [ngClass]="{'is-invalid' : profileForm.controls.age.invalid && (isSubmitted || profileForm.controls.age.touched || profileForm.controls.age.dirty),
+                'is-valid' : profileForm.controls.age.valid && (isSubmitted || profileForm.controls.age.touched || profileForm.controls.age.dirty)}">
+                <div class="invalid-feedback"
+                    *ngIf="profileForm.controls.age.invalid && (isSubmitted || profileForm.controls.age.touched || profileForm.controls.age.dirty)">
+                    <div *ngIf="profileForm.controls.age.errors?.required">
+                        Age is required.
+                    </div>
+                    <div *ngIf="profileForm.controls.age.errors?.min">
+                        Age is less than 8.
+                    </div>
+                    <div *ngIf="profileForm.controls.age.errors?.max">
+                        Age is greter than 60.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" formGroupName="address">
+            <div class="col-md-3 mb-3 formControl">
+                <label for="validationServer03">City</label>
+                <input type="text" class="form-control" id="validationServer03" formControlName="city"
+                    placeholder="City">
+            </div>
+            <div class="col-md-3 mb-3 formControl">
+                <label for="validationServer04">State</label>
+                <input type="text" class="form-control" id="validationServer04" formControlName="state"
+                    placeholder="State">
+                <div class="invalid-feedback">
+                    Please provide a valid state.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3 formControl">
+                <label for="validationServer05">Zip</label>
+                <input type="text" class="form-control" id="validationServer05" formControlName="zipCode"
+                    placeholder="Zip">
+                <div class="invalid-feedback">
+                    Please provide a valid zip.
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" formControlName="terms">
+                <label class="form-check-label" for="invalidCheck3">
+                    Agree to terms and conditions
+                </label>
+                <div class="text-danger"
+                    *ngIf="profileForm.controls.terms.invalid && (isSubmitted || profileForm.controls.terms.touched || profileForm.controls.terms.dirty)">
+                    <div *ngIf="profileForm.controls.terms.errors?.required">
+                        You must agree before submitting. 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mr-2" type="submit" (click)="saveForm()">Submit form</button>
+        <button class="btn btn-primary" type="button" (click)="reset()">Reset</button>
+
+    </form>
+</div>
